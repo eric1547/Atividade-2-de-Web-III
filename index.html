@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 para aceitar acentos corretamente. -->
+    <meta charset="UTF-8">
+
+    <!-- Faz a página se adaptar corretamente a celulares, tablets e computadores. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define o título que aparece na aba do navegador. -->
+    <title>Laboratório JavaScript + DOM</title>
+
+    <!--
+        Importa o Bootstrap pelo CDN.
+        O Bootstrap será usado apenas para deixar a página organizada e bonita.
+        O foco da aula continua sendo JavaScript e DOM.
+    -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Importa nosso arquivo CSS próprio. -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         CABEÇALHO DA PÁGINA
+         ========================================================= -->
+    <header class="bg-dark text-white py-4 mb-4">
+        <div class="container">
+            <h1 class="mb-2">Laboratório JavaScript + DOM</h1>
+
+            <p class="mb-0">
+                Exercícios progressivos para entender como o JavaScript
+                encontra elementos, reage a eventos e altera a página.
+            </p>
+        </div>
+    </header>
+
+
+    <!-- =========================================================
+         CONTEÚDO PRINCIPAL
+         ========================================================= -->
+    <main class="container pb-5">
+
+        <!--
+            Este alerta explica a ideia central da aula.
+            Ele não possui comportamento JavaScript.
+        -->
+        <div class="alert alert-info shadow-sm">
+            <strong>Ideia central:</strong>
+            HTML cria a estrutura,
+            JavaScript encontra elementos,
+            eventos detectam ações do usuário
+            e o DOM permite alterar a tela.
+        </div>
+
+
+        <!-- =====================================================
+             EXERCÍCIO 01
+             ALTERAR TEXTO
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-primary mb-2">Exercício 01</span>
+
+                <h2 class="h4">Alterar um texto</h2>
+
+                <p>
+                    Primeiro exemplo: localizar um elemento pelo
+                    <code>id</code> e trocar seu conteúdo.
+                </p>
+
+                <!--
+                    O JavaScript encontrará este H3 pelo id="tituloExemplo1".
+                -->
+                <h3 id="tituloExemplo1" class="h5">
+                    Texto original'
+                </h3>
+
+                <!--
+                    O JavaScript também encontrará este botão pelo seu ID.
+                -->
+                <button
+                    id="btnAlterarTexto"
+                    class="btn btn-primary"
+                    type="button"
+                >
+                    Alterar texto
+                </button>
+
+                <!--
+                    Botão adicional para restaurar o exemplo.
+                -->
+                <button
+                    id="btnRestaurarTexto"
+                    class="btn btn-outline-secondary"
+                    type="button"
+                >
+                    Restaurar
+                </button>
+            </div>
+        </section>
+        <!-- =====================================================
+             EXERCÍCIO 02
+             ALTERAR CLASSES
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+                <span class="badge text-bg-success mb-2">Exercício 02</span>
+                <h2 class="h4">Alterar a aparência</h2>
+                <p>
+                    Agora vamos mudar classes do Bootstrap usando
+                    <code>classList</code>.
+                </p>
+                <!--
+                    Esta caixa começa azul.
+                    Depois o JavaScript trocará para verde.
+                -->
+                <div
+                    id="caixaCor"
+                    class="alert alert-primary"
+                >
+                    Minha aparência pode mudar.
+                </div>
+                <button
+                    id="btnMudarCor"
+                    class="btn btn-success"
+                    type="button"
+                >
+                    Mudar aparência
+                </button>
+               
+            </div>
+        </section>
+<!-- =====================================================
+             EXERCÍCIO 03
+             LER INPUT
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-warning mb-2">Exercício 03</span>
+
+                <h2 class="h4">Ler algo digitado pelo usuário</h2>
+
+                <p>
+                    Aqui usaremos a propriedade <code>value</code>
+                    de um campo de formulário.
+                </p>
+
+                <label
+                    for="nomeAluno"
+                    class="form-label"
+                >
+                    Digite seu nome:
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeAluno"
+                    class="form-control mb-3"
+                    placeholder="Exemplo: Ana"
+                >
+
+                <button
+                    id="btnSaudar"
+                    class="btn btn-warning"
+                    type="button"
+                >
+                    Mostrar mensagem
+                </button>
+
+                <div
+                    id="mensagemAluno"
+                    class="alert alert-light border mt-3 mb-0"
+                >
+                    A mensagem aparecerá aqui.
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             EXERCÍCIO 04
+             CONTADOR
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-danger mb-2">Exercício 04</span>
+
+                <h2 class="h4">Contador</h2>
+
+                <p>
+                    Este exemplo mostra uma variável JavaScript
+                    guardando o estado atual da aplicação.
+                </p>
+
+                <div class="contador-box text-center mb-3">
+                    <div class="text-muted">Valor atual</div>
+
+                    <!--
+                        O número exibido aqui será atualizado pelo JavaScript.
+                    -->
+                    <div
+                        id="numeroContador"
+                        class="display-4 fw-bold"
+                    >
+                        0
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 flex-wrap">
+
+                    <button
+                        id="btnDiminuir"
+                        class="btn btn-danger"
+                        type="button"
+                    >
+                        - Diminuir
+                    </button>
+
+                    <button
+                        id="btnAumentar"
+                        class="btn btn-success"
+                        type="button"
+                    >
+                        + Aumentar
+                    </button>
+
+                    <button
+                        id="btnZerar"
+                        class="btn btn-outline-secondary"
+                        type="button"
+                    >
+                        Zerar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             EXERCÍCIO 05
+             MOSTRAR E ESCONDER
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-info mb-2">Exercício 05</span>
+
+                <h2 class="h4">Mostrar e esconder conteúdo</h2>
+
+                <p>
+                    Usaremos a classe <code>d-none</code> do Bootstrap
+                    junto com <code>classList.toggle()</code>.
+                </p>
+
+                <button
+                    id="btnDetalhes"
+                    class="btn btn-info"
+                    type="button"
+                >
+                    Mostrar / esconder detalhes
+                </button>
+
+                <!--
+                    d-none significa display: none.
+                    Por isso esta caixa começa escondida.
+                -->
+                <div
+                    id="painelDetalhes"
+                    class="alert alert-info mt-3 d-none"
+                >
+                    Este conteúdo estava escondido e foi exibido
+                    sem recarregar a página.
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             EXERCÍCIO 06
+             CRIAR ELEMENTOS
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-secondary mb-2">Exercício 06</span>
+
+                <h2 class="h4">Criar elementos pelo JavaScript</h2>
+
+                <p>
+                    Neste exercício, o JavaScript criará novos
+                    elementos usando <code>createElement()</code>.
+                </p>
+
+                <button
+                    id="btnCriarItem"
+                    class="btn btn-secondary mb-3"
+                    type="button"
+                >
+                    Criar novo item
+                </button>
+
+                <!--
+                    Esta lista começa vazia.
+                    O JavaScript colocará itens dentro dela.
+                -->
+                <ul
+                    id="listaCriada"
+                    class="list-group"
+                >
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             EXERCÍCIO 07
+             LISTA DE TAREFAS
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-dark mb-2">Exercício 07</span>
+
+                <h2 class="h4">Lista de tarefas</h2>
+
+                <p>
+                    Aqui juntaremos entrada de dados, eventos,
+                    criação de elementos e remoção de elementos.
+                </p>
+
+                <div class="row g-2">
+
+                    <div class="col-md-9">
+                        <input
+                            type="text"
+                            id="inputTarefa"
+                            class="form-control"
+                            placeholder="Digite uma tarefa"
+                        >
+                    </div>
+
+                    <div class="col-md-3 d-grid">
+                        <button
+                            id="btnAdicionarTarefa"
+                            class="btn btn-dark"
+                            type="button"
+                        >
+                            Adicionar tarefa
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    id="avisoTarefa"
+                    class="small text-danger mt-2"
+                >
+                </div>
+
+                <ul
+                    id="listaTarefas"
+                    class="list-group mt-3"
+                >
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             EXERCÍCIO 08
+             FILTRO DE CARDS
+             ===================================================== -->
+        <section class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <span class="badge text-bg-primary mb-2">Exercício 08</span>
+
+                <h2 class="h4">Filtrar produtos</h2>
+
+                <p>
+                    Agora o JavaScript vai trabalhar com vários
+                    elementos ao mesmo tempo usando
+                    <code>querySelectorAll()</code>.
+                </p>
+
+                <label
+                    for="inputFiltroProduto"
+                    class="form-label"
+                >
+                    Pesquisar produto:
+                </label>
+
+                <input
+                    type="text"
+                    id="inputFiltroProduto"
+                    class="form-control mb-3"
+                    placeholder="Exemplo: mouse"
+                >
+
+                <div class="row g-3" id="areaProdutos">
+
+                    <!--
+                        Todos os produtos possuem a mesma classe "produto".
+                        Isso permite selecionar todos ao mesmo tempo.
+                    -->
+                    <div class="col-md-4 produto">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h3 class="h5 nome-produto">Mouse Gamer</h3>
+                                <p class="mb-0">R$ 150,00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produto">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h3 class="h5 nome-produto">Teclado Mecânico</h3>
+                                <p class="mb-0">R$ 300,00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produto">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h3 class="h5 nome-produto">Monitor 24 polegadas</h3>
+                                <p class="mb-0">R$ 900,00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produto">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h3 class="h5 nome-produto">Notebook</h3>
+                                <p class="mb-0">R$ 3.500,00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produto">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h3 class="h5 nome-produto">Headset</h3>
+                                <p class="mb-0">R$ 200,00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produto">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h3 class="h5 nome-produto">Webcam</h3>
+                                <p class="mb-0">R$ 180,00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+
+    <!-- =========================================================
+         RODAPÉ
+         ========================================================= -->
+    <footer class="bg-light border-top py-4">
+        <div class="container">
+            <p class="mb-0 text-muted">
+                Desenvolvimento Web III — JavaScript, DOM e preparação para SPA
+            </p>
+        </div>
+    </footer>
+
+
+    <!--
+        Importa o JavaScript do Bootstrap.
+        Ele permite que componentes interativos do Bootstrap funcionem.
+        Neste projeto, nosso foco continua sendo o arquivo app.js.
+    -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <!--
+        Importa nosso arquivo JavaScript principal.
+        Ele fica no final da página para que o HTML já exista
+        quando o JavaScript começar a procurar os elementos.
+    -->
+    <script src="js/app.js"></script>
+
+</body>
+</html>
